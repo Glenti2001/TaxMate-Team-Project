@@ -1,1 +1,71 @@
-<p>sigurimet-calculator works!</p>
+<!-- social-security.component.html -->
+<div class="card">
+    <div class="card-header bg-info text-white">
+      <h4>Sigurimet Shoqërore dhe Shëndetësore</h4>
+    </div>
+    <div class="card-body">
+      <div class="mb-3">
+        <button class="btn btn-info" (click)="addEmployee()">Shto punonjës</button>
+      </div>
+  
+      <div class="employee-section mb-4" *ngFor="let employee of employees; let i = index">
+        <div class="card">
+          <div class="card-header d-flex justify-content-between align-items-center">
+            <h5>Punonjësi {{i + 1}}</h5>
+            <button *ngIf="employees.length > 1" class="btn btn-sm btn-danger" (click)="removeEmployee(i)">Hiq</button>
+          </div>
+          <div class="card-body">
+            <div class="form-group mb-3">
+              <label for="name{{i}}">Emri i punonjësit:</label>
+              <input type="text" id="name{{i}}" class="form-control" [(ngModel)]="employee.name">
+            </div>
+            <div class="form-group mb-3">
+              <label for="salary{{i}}">Paga bruto (në lekë):</label>
+              <input type="number" id="salary{{i}}" class="form-control" [(ngModel)]="employee.salary" (change)="calculateContributions(i)">
+            </div>
+            
+            <div class="results mt-3" *ngIf="employee.salary > 0">
+              <h6>Kontributet e punonjësit:</h6>
+              <ul class="list-group mb-3">
+                <li class="list-group-item d-flex justify-content-between">
+                  <span>Sigurimet shoqërore (9.5%):</span> 
+                  <span>{{employee.employeeSocialSecurity | number:'1.2-2'}} lekë</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between">
+                  <span>Sigurimet shëndetësore (1.7%):</span> 
+                  <span>{{employee.employeeHealthInsurance | number:'1.2-2'}} lekë</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between font-weight-bold">
+                  <strong>Totali i kontributeve të punonjësit (11.2%):</strong> 
+                  <strong>{{employee.totalEmployeeContribution | number:'1.2-2'}} lekë</strong>
+                </li>
+              </ul>
+              
+              <h6>Kontributet e punëdhënësit:</h6>
+              <ul class="list-group">
+                <li class="list-group-item d-flex justify-content-between">
+                  <span>Sigurimet shoqërore (15%):</span> 
+                  <span>{{employee.employerSocialSecurity | number:'1.2-2'}} lekë</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between">
+                  <span>Sigurimet shëndetësore (1.7%):</span> 
+                  <span>{{employee.employerHealthInsurance | number:'1.2-2'}} lekë</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between font-weight-bold">
+                  <strong>Totali i kontributeve të punëdhënësit (16.7%):</strong> 
+                  <strong>{{employee.totalEmployerContribution | number:'1.2-2'}} lekë</strong>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+      <div class="alert alert-info mt-3" *ngIf="totalEmployeeContribution > 0">
+        <h5>Përmbledhje e kontributeve:</h5>
+        <p><strong>Totali i kontributeve të punonjësve:</strong> {{totalEmployeeContribution | number:'1.2-2'}} lekë</p>
+        <p><strong>Totali i kontributeve të punëdhënësit:</strong> {{totalEmployerContribution | number:'1.2-2'}} lekë</p>
+        <p><strong>Totali i përgjithshëm i kontributeve:</strong> {{totalEmployeeContribution + totalEmployerContribution | number:'1.2-2'}} lekë</p>
+      </div>
+    </div>
+  </div>
