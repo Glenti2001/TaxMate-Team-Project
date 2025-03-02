@@ -7,7 +7,8 @@
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
-          "style": "scss"
+          "style": ["src/styles.scss"]
+          
         }
       },
       "root": "",
@@ -31,9 +32,9 @@
                 "input": "public"
               }
             ],
-            "styles": [
-              "src/styles.scss"
-            ],
+            
+           "styles": ["src/styles.scss"],
+            
             "scripts": [],
             "server": "src/main.server.ts",
             "outputMode": "server",
@@ -103,5 +104,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "fd2eda26-c747-46de-9407-dfa0ec3a9259"
   }
 }

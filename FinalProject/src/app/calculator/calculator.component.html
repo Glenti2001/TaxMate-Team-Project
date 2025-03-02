@@ -1,0 +1,62 @@
+<p>calculator works!</p>
+<div class="calculator-container">
+    <h2>Llogarit Tatimin mbi të Ardhurat e Biznesit dhe TVSH</h2>
+    
+    <!-- Business Type Selection -->
+    <div class="input-group">
+      <label for="businessType">Lloji i Biznesit:</label>
+      <select [(ngModel)]="businessType" id="businessType">
+        <option value="small">Biznes i vogël</option>
+        <option value="large">Biznes i madh</option>
+      </select>
+    </div>
+    
+    <!-- Revenue Input for Small Business -->
+    <div class="input-group" *ngIf="businessType === 'small'">
+      <label for="revenue">Xhiroja e biznesit (Lekë):</label>
+      <input type="number" [(ngModel)]="revenue" id="revenue" />
+    </div>
+    
+    <!-- Profit Input for Large Business -->
+    <div class="input-group" *ngIf="businessType === 'large'">
+      <label for="profit">Fitimi i biznesit (Lekë):</label>
+      <input type="number" [(ngModel)]="profit" id="profit" />
+    </div>
+    
+    <!-- Tax Type Selection (TVSH) -->
+    <div class="input-group">
+      <label for="taxType">Zgjidhni TVSH:</label>
+      <select [(ngModel)]="taxType" id="taxType">
+        <option value="normal">TVSH Normale (20%)</option>
+        <option value="agriculture">TVSH në Bujqësi (6%)</option>
+      </select>
+    </div>
+    
+    <!-- Calculate Taxes Button -->
+    <button (click)="calculateTaxes()">Llogarit Tatimin</button>
+    
+    <!-- Results Container -->
+    <div class="results-container">
+      <!-- Card for Business Tax (Tatimi) -->
+      <div *ngIf="taxResults.businessTax !== undefined" class="card">
+        <div class="card-header">
+          <h3>Taksa mbi të Ardhurat e Biznesit (Tatimi)</h3>
+        </div>
+        <div class="card-body">
+          <p><strong>Taksa mbi të ardhurat e biznesit:</strong> {{ taxResults.businessTax | currency:'ALL' }}</p>
+        </div>
+      </div>
+      
+      <!-- Card for VAT (TVSH) -->
+      <div *ngIf="taxResults.vat !== undefined" class="card">
+        <div class="card-header">
+          <h3>TVSH</h3>
+        </div>
+        <div class="card-body">
+          <p><strong>Baza për TVSH:</strong> {{ taxResults.baseAmount | currency:'ALL' }}</p>
+          <p><strong>TVSH:</strong> {{ taxResults.vat | currency:'ALL' }}</p>
+          <p><strong>Totali me TVSH:</strong> {{ taxResults.totalWithVAT | currency:'ALL' }}</p>
+        </div>
+      </div>
+    </div>
+</div>
