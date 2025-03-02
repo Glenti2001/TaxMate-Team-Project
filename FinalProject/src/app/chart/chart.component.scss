@@ -1,0 +1,17 @@
+.chart-container {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+  }
+  
+  .chart-wrapper {
+    border: 1px solid #eaeaea;
+    padding: 15px;
+    border-radius: 4px;
+    
+    h3 {
+      text-align: center;
+      margin-top: 0;
+    }
+  }
+  

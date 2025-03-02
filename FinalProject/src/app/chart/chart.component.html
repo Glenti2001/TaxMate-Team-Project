@@ -1,0 +1,19 @@
+<div class="chart-container">
+    <div class="chart-wrapper">
+      <h3>Income</h3>
+      <canvas baseChart
+        [type]="'line'"
+        [data]="incomeChartData"
+        [options]="chartOptions">
+      </canvas>
+    </div>
+    
+    <div class="chart-wrapper">
+      <h3>Expenses</h3>
+      <canvas baseChart
+        [type]="'line'"
+        [data]="expenseChartData"
+        [options]="chartOptions">
+      </canvas>
+    </div>
+  </div>
