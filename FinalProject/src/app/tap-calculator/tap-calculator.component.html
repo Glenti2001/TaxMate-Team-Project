@@ -1,0 +1,42 @@
+<!-- income-tax.component.html -->
+<div class="card">
+    <div class="card-header bg-warning text-dark">
+      <h4>Tatimi mbi Pagat (TAP)</h4>
+    </div>
+    <div class="card-body">
+      <div class="form-group mb-3">
+        <label for="grossSalary">Paga bruto (në lekë):</label>
+        <input type="number" id="grossSalary" class="form-control" [(ngModel)]="grossSalary">
+        <small class="form-text text-muted">
+          0% për pagat deri në 30,000 lekë<br>
+          13% për pjesën mbi 30,000 deri në 150,000 lekë<br>
+          23% për pjesën mbi 150,000 lekë
+        </small>
+      </div>
+  
+      <button class="btn btn-warning" (click)="calculateTax()">Llogarit</button>
+  
+      <div class="results mt-3" *ngIf="grossSalary > 0">
+        <div class="alert alert-info">
+          <h5>Përmbledhje e llogaritjeve:</h5>
+          <div class="row">
+            <div class="col-md-6">
+              <p><strong>Paga bruto:</strong> {{grossSalary | number:'1.2-2'}} lekë</p>
+              <p><strong>Sigurimet shoqërore (9.5%):</strong> {{socialSecurity | number:'1.2-2'}} lekë</p>
+              <p><strong>Sigurimet shëndetësore (1.7%):</strong> {{healthInsurance | number:'1.2-2'}} lekë</p>
+              <p><strong>Totali i kontributeve:</strong> {{totalContributions | number:'1.2-2'}} lekë</p>
+              <p><strong>Të ardhurat e tatueshme:</strong> {{taxableIncome | number:'1.2-2'}} lekë</p>
+            </div>
+            <div class="col-md-6">
+              <h6>Përllogaritja e tatimit:</h6>
+              <p><strong>Tatim 0% deri në 30,000 lekë:</strong> {{bracket1Tax | number:'1.2-2'}} lekë</p>
+              <p><strong>Tatim 13% nga 30,001-150,000 lekë:</strong> {{bracket2Tax | number:'1.2-2'}} lekë</p>
+              <p><strong>Tatim 23% mbi 150,000 lekë:</strong> {{bracket3Tax | number:'1.2-2'}} lekë</p>
+              <p><strong>Tatimi total:</strong> {{incomeTax | number:'1.2-2'}} lekë</p>
+              <p><strong>Paga neto:</strong> {{netSalary | number:'1.2-2'}} lekë</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

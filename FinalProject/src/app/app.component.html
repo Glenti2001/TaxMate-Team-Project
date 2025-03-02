@@ -20,6 +20,12 @@
           id="expense" 
           [(ngModel)]="currentExpense" 
           placeholder="Enter expense amount">
+<!-- app.component.html -->
+<div class="container mt-4 mb-4">
+    <div class="row mb-4">
+      <div class="col-12 text-center">
+        <h1>{{ title }}</h1>
+        <p class="lead">Llogaritni taksat, TVSH dhe sigurimet shoqërore bazuar në rregullat aktuale në Shqipëri</p>
       </div>
       
       <button (click)="saveMonthData()">Save</button>
@@ -42,3 +48,30 @@
 </div>
 
   
+  
+    <div class="row mb-4">
+      <div class="col-lg-6 mb-4">
+        <app-business-income-tax></app-business-income-tax>
+      </div>
+      <div class="col-lg-6 mb-4">
+        <app-vat></app-vat>
+      </div>
+    </div>
+  
+    <div class="row mb-4">
+      <div class="col-lg-6 mb-4">
+        <app-social-security></app-social-security>
+      </div>
+      <div class="col-lg-6 mb-4">
+        <app-income-tax></app-income-tax>
+      </div>
+    </div>
+  
+    <div class="row">
+      <div class="col-12 text-center">
+        <footer class="text-muted">
+          <p>© 2025 - Sistemi i Llogaritjes së Taksave në Shqipëri</p>
+        </footer>
+      </div>
+    </div>
+  </div>
