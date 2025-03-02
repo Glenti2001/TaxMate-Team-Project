@@ -9,6 +9,7 @@
         "@schematics/angular:component": {
           "style": "scss"
         }
+        
       },
       "root": "",
       "sourceRoot": "src",
@@ -32,9 +33,10 @@
               }
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles.scss",
+               "node_modules/bootstrap/dist/css/bootstrap.min.css"
             ],
-            "scripts": [],
+            "scripts": [ "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"],
             "server": "src/main.server.ts",
             "outputMode": "server",
             "ssr": {
@@ -103,5 +105,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "3d8190f4-91eb-4f38-8920-cd1415fd102b"
   }
 }

@@ -1,0 +1,112 @@
+body,
+html {
+  height: 100%;
+  margin: 0;
+}
+
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+ 
+}
+
+
+.main-content {
+  flex: 1;
+}
+
+
+.footer {
+  background-color: #3b5670;
+  color: white;
+  padding: 20px;
+  text-align: center;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  flex-wrap: wrap;
+}
+
+.footer-text {
+  flex: 1;
+  font-size: 14px;
+  text-align: left;
+}
+
+.quick-links {
+  flex: 1;
+  text-align: center;
+}
+
+.quick-links ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.quick-links li {
+  margin-bottom: 10px;
+}
+
+.quick-links a {
+  color: white;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.quick-links a:hover {
+  color: #007bff;
+}
+
+.email-submit {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.email-input {
+  padding: 8px;
+  font-size: 14px;
+  border-radius: 5px;
+  border: none;
+  width: 200px;
+}
+
+.submit-btn {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 14px;
+  border-radius: 5px;
+}
+
+.submit-btn:hover {
+  background-color: #0056b3;
+}
+
+.social-icons {
+  display: flex;
+  justify-content: flex-start;
+  gap: 20px;
+  padding: 10px 0;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.social-icon {
+  color: white;
+  font-size: 20px;
+  text-decoration: none;
+}
+
+.social-icon:hover {
+  color: #007bff;
+}
