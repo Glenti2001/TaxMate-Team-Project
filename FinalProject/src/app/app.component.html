@@ -1,33 +1,168 @@
+<div class="financial-tracker-container">
+  <header class="page-header">
+    <div class="header-content">
+      <h1>Menaxhuesi Financiar i Biznesit</h1>
+      <p class="subtitle">
+        Zgjidhje Gjithëpërfshirëse për Menaxhimin Financiar
+      </p>
+    </div>
+  </header>
+
+  <section class="intro-section">
+    <div class="intro-content">
+      <div class="intro-text">
+        <h2>Menaxhoni Financat e Biznesit tuaj me Lehtësi</h2>
+        <p>
+          Sistemi ynë intuitiv i menaxhimit financiar ju ndihmon të monitoroni
+          të ardhurat dhe shpenzimet mujore, duke ofruar analiza të qarta mbi
+          shëndetin financiar të biznesit tuaj.
+        </p>
+        <div class="feature-highlights">
+          <div class="feature">
+            <i class="icon">📊</i>
+            <span>Monitorim Mujor</span>
+          </div>
+          <div class="feature">
+            <i class="icon">💡</i>
+            <span>Vizualizime të Detajuara</span>
+          </div>
+          <div class="feature">
+            <i class="icon">💰</i>
+            <span>Të Ardhura vs Shpenzime</span>
+          </div>
+        </div>
+
+        <div class="scroll-button-container">
+          <button class="scroll-button" (click)="scrollToTrackingSection()">
+            <span>Fillo Tani</span>
+            <i class="scroll-icon fas fa-arrow-down"></i>
+          </button>
+        </div>
+      </div>
+
+      <div class="intro-image">
+        <img
+          src="https://media.istockphoto.com/id/1482319003/vector/3d-hand-with-calculator-and-cash-money.jpg?s=612x612&w=0&k=20&c=VLOUSM4izETuGy0SFAcBwTuxQ0kYnLj34ctlxl98ux4="
+          alt="Financial Tracking Illustration"
+          class="hero-image"
+        />
+      </div>
+    </div>
+  </section>
+
+  <section class="start-tracking-section">
+    <div *ngIf="currentMonthIndex < months.length" class="input-section">
+      <p class="tracking-instructions">
+        Shënoni të ardhurat dhe shpenzimet mujore për të ndjekur ecurinë
+        financiare të biznesit tuaj
+      </p>
+
+      <div class="tracking-form">
+        <div class="form-header">
+          <h3>Të dhënat për muajin: {{ months[currentMonthIndex] }}</h3>
+        </div>
+
+        <div class="input-grid">
+          <div class="form-group">
+            <label for="income"> <i class="icon">💸</i> Të Ardhura </label>
+            <input
+              type="number"
+              id="income"
+              [(ngModel)]="currentIncome"
+              placeholder="Enter total monthly income"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="expense"> <i class="icon">💳</i> Shpenzime ($) </label>
+            <input
+              type="number"
+              id="expense"
+              [(ngModel)]="currentExpense"
+              placeholder="Enter total monthly expenses"
+            />
+          </div>
+        </div>
+
+        <button (click)="saveMonthData()" class="save-button">
+          Ruaj të Dhënat Mujore
+        </button>
+      </div>
+    </div>
+
+    <div *ngIf="currentMonthIndex >= months.length" class="results-section">
+      <h2>Pasqyra vjetore financiare</h2>
+      <app-chart [data]="yearlyData"></app-chart>
+    </div>
+  </section>
+</div>
+
+<!-- <div class="container mt-4 mb-4">
+    <div class="col-12 text-center">
+      <h1>{{ title }}</h1>
+      <p class="lead">Llogaritni taksat, TVSH dhe sigurimet shoqërore bazuar në rregullat aktuale në Shqipëri</p>
+    </div>
+</div>
+    <div class="row mb-4">
+  
+    <div class="row mb-4">
+      <div class="col-lg-6 mb-4">
+        <app-business-income-tax></app-business-income-tax>
+      </div>
+      <div class="col-lg-6 mb-4">
+        <app-vat></app-vat>
+      </div>
+    </div>
+  
+    <div class="row mb-4">
+      <div class="col-lg-6 mb-4">
+        <app-social-security></app-social-security>
+      </div>
+      <div class="col-lg-6 mb-4">
+        <app-income-tax></app-income-tax>
+      </div>
+    </div>
+  
+    <div class="row">
+      <div class="col-12 text-center">
+        <footer class="text-muted">
+          <p>© 2025 - Sistemi i Llogaritjes së Taksave në Shqipëri</p>
+        </footer>
+      </div>
+    </div>
+  </div> -->
+
+<app-deadlines></app-deadlines>
+
+<!-- Glenti's work -->
+
 <!-- Background with Overlay -->
 <div class="app-background"></div>
-
 <!-- Calculator Container -->
 <div class="calculator-container">
   <h1>{{ title }}</h1>
 <!-- app.component.html -->
 <div class="app-background">
-  
 </div>
   <!-- Navigation Tabs -->
   <div class="nav-tabs">
-    <button [class.active]="activeComponent === 'tatimi-calculator'" 
+    <button [class.active]="activeComponent === 'tatimi-calculator'"
             (click)="setActiveComponent('tatimi-calculator')">
       Tatimi i Biznesit
     </button>
-    <button [class.active]="activeComponent === 'tvsh-calculator'" 
+    <button [class.active]="activeComponent === 'tvsh-calculator'"
             (click)="setActiveComponent('tvsh-calculator')">
       TVSH
     </button>
-    <button [class.active]="activeComponent === 'sigurimet-calculator'" 
+    <button [class.active]="activeComponent === 'sigurimet-calculator'"
             (click)="setActiveComponent('sigurimet-calculator')">
       Sigurime
     </button>
-    <button [class.active]="activeComponent === 'tap-calculator'" 
+    <button [class.active]="activeComponent === 'tap-calculator'"
             (click)="setActiveComponent('tap-calculator')">
       Tatimi mbi Pagat (TAP)
     </button>
   </div>
-
   <!-- Dynamic Component Container -->
   <div class="component-container">
     <app-tatimi-calculator *ngIf="activeComponent === 'tatimi-calculator'"></app-tatimi-calculator>

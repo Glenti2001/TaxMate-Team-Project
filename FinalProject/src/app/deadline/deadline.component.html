@@ -1,0 +1,14 @@
+<div class="deadlines-container">
+  <h2 class="deadlines-title">Payment Deadlines</h2>
+  <div class="deadlines-table">
+    <div class="deadlines-row" *ngFor="let deadline of deadlines">
+      <div class="deadline-details">
+        <div class="deadline-name">{{ deadline.name }}</div>
+        <div class="deadline-condition">{{ deadline.condition }}</div>
+      </div>
+      <div class="countdown-button" [ngClass]="{'urgent': deadline.daysRemaining < 7}">
+        <span>{{ deadline.daysRemaining }} days</span>
+      </div>
+    </div>
+  </div>
+</div>

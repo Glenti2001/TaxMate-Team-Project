@@ -1,0 +1,48 @@
+<div class="financial-summary">
+  <div class="charts-container">
+    <div class="chart-wrapper">
+      <h3>Të Ardhura</h3>
+      <canvas baseChart
+        [type]="'line'"
+        [data]="incomeChartData"
+        [options]="chartOptions">
+      </canvas>
+    </div>
+    
+    <div class="chart-wrapper">
+      <h3>Shpenzime</h3>
+      <canvas baseChart
+        [type]="'line'"
+        [data]="expenseChartData"
+        [options]="chartOptions">
+      </canvas>
+    </div>
+  </div>
+  
+  <div class="data-table-container">
+    <table class="financial-data-table">
+      <thead>
+        <tr>
+          <th>Muaji</th>
+          <th>Te Ardhura ($)</th>
+          <th>Shpenzime ($)</th>
+          <th>Te Ardhura Neto ($)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let entry of data">
+          <td>{{ entry.month }}</td>
+          <td>{{ entry.income | number:'1.2-2' }}</td>
+          <td>{{ entry.expense | number:'1.2-2' }}</td>
+          <td>{{ entry.income - entry.expense | number:'1.2-2' }}</td>
+        </tr>
+        <tr class="total-row">
+          <td>Total</td>
+          <td>{{ getTotalIncome() | number:'1.2-2' }}</td>
+          <td>{{ getTotalExpenses() | number:'1.2-2' }}</td>
+          <td>{{ getTotalNetIncome() | number:'1.2-2' }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
