@@ -1,7 +1,8 @@
 import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NgChartsModule } from 'ng2-charts';
-import { ChartConfiguration, ChartOptions } from 'chart.js';
+import { Chart, ChartConfiguration, ChartOptions, registerables } from 'chart.js';
+Chart.register(...registerables);
 
 interface MonthlyData {
   month: string;
@@ -74,5 +75,17 @@ export class ChartComponent implements OnChanges {
     
     this.expenseChartData.labels = months;
     this.expenseChartData.datasets[0].data = expenseValues;
+  }
+  
+  getTotalIncome(): number {
+    return this.data.reduce((sum, entry) => sum + entry.income, 0);
+  }
+  
+  getTotalExpenses(): number {
+    return this.data.reduce((sum, entry) => sum + entry.expense, 0);
+  }
+  
+  getTotalNetIncome(): number {
+    return this.data.reduce((sum, entry) => sum + (entry.income - entry.expense), 0);
   }
 }
