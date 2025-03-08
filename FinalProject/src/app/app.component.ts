@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, NgIf } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ChartComponent } from './chart/chart.component';
 import { DeadlinesComponent } from './deadline/deadline.component';
@@ -20,40 +20,52 @@ interface MonthlyData {
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, FormsModule, ChartComponent, DeadlinesComponent, TatimiCalculatorComponent,
+  imports: [
+    FormsModule,
+    ChartComponent,
+    DeadlinesComponent,
+    TatimiCalculatorComponent,
     TvshCalculatorComponent,
     SigurimetCalculatorComponent,
-    TapCalculatorComponent
+    NgIf,
+    TapCalculatorComponent,
     // BusinessIncomeTaxComponent,
     // VatComponent,
     // SocialSecurityComponent,
     // IncomeTaxComponent
   ],
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  // title = 'Sistemi i Llogaritjes së Taksave në Shqipëri';
+  title = 'Sistemi i Llogaritjes së Taksave në Shqipëri';
   activeComponent: string = 'tvsh-calculator';
 
   months: string[] = [
-    'Janar', 'Shkurt', 'Mars', 'Prill', 'Maj', 'Qershor',
-    'Korrik', 'Gusht', 'Shtator', 'Tetor', 'Nentor', 'Dhjetor'
+    'Janar',
+    'Shkurt',
+    'Mars',
+    'Prill',
+    'Maj',
+    'Qershor',
+    'Korrik',
+    'Gusht',
+    'Shtator',
+    'Tetor',
+    'Nentor',
+    'Dhjetor',
   ];
-  
+
   currentMonthIndex = 0;
   currentIncome = 0;
   currentExpense = 0;
   yearlyData: MonthlyData[] = [];
 
-  
-  
   saveMonthData(): void {
-
     this.yearlyData.push({
       month: this.months[this.currentMonthIndex],
       income: this.currentIncome,
-      expense: this.currentExpense
+      expense: this.currentExpense,
     });
 
     this.currentMonthIndex++;
@@ -69,12 +81,10 @@ export class AppComponent {
   scrollToTrackingSection() {
     const trackingSection = document.querySelector('.start-tracking-section');
     if (trackingSection) {
-      trackingSection.scrollIntoView({ 
+      trackingSection.scrollIntoView({
         behavior: 'smooth',
-        block: 'start'
+        block: 'start',
       });
     }
   }
 }
-
-
