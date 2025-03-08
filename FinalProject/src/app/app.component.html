@@ -133,3 +133,41 @@
   </div> -->
 
 <app-deadlines></app-deadlines>
+
+<!-- Glenti's work -->
+
+<!-- Background with Overlay -->
+<div class="app-background"></div>
+<!-- Calculator Container -->
+<div class="calculator-container">
+  <h1>{{ title }}</h1>
+<!-- app.component.html -->
+<div class="app-background">
+</div>
+  <!-- Navigation Tabs -->
+  <div class="nav-tabs">
+    <button [class.active]="activeComponent === 'tatimi-calculator'"
+            (click)="setActiveComponent('tatimi-calculator')">
+      Tatimi i Biznesit
+    </button>
+    <button [class.active]="activeComponent === 'tvsh-calculator'"
+            (click)="setActiveComponent('tvsh-calculator')">
+      TVSH
+    </button>
+    <button [class.active]="activeComponent === 'sigurimet-calculator'"
+            (click)="setActiveComponent('sigurimet-calculator')">
+      Sigurime
+    </button>
+    <button [class.active]="activeComponent === 'tap-calculator'"
+            (click)="setActiveComponent('tap-calculator')">
+      Tatimi mbi Pagat (TAP)
+    </button>
+  </div>
+  <!-- Dynamic Component Container -->
+  <div class="component-container">
+    <app-tatimi-calculator *ngIf="activeComponent === 'tatimi-calculator'"></app-tatimi-calculator>
+    <app-tvsh-calculator *ngIf="activeComponent === 'tvsh-calculator'"></app-tvsh-calculator>
+    <app-sigurimet-calculator *ngIf="activeComponent === 'sigurimet-calculator'"></app-sigurimet-calculator>
+    <app-tap-calculator *ngIf="activeComponent === 'tap-calculator'"></app-tap-calculator>
+  </div>
+</div>

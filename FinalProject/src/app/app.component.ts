@@ -3,6 +3,10 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ChartComponent } from './chart/chart.component';
 import { DeadlinesComponent } from './deadline/deadline.component';
+import { TatimiCalculatorComponent } from './tatimi-calculator/tatimi-calculator.component';
+import { TvshCalculatorComponent } from './tvsh-calculator/tvsh-calculator.component';
+import { SigurimetCalculatorComponent } from './sigurimet-calculator/sigurimet-calculator.component';
+import { TapCalculatorComponent } from './tap-calculator/tap-calculator.component';
 interface MonthlyData {
   month: string;
   income: number;
@@ -16,7 +20,10 @@ interface MonthlyData {
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, FormsModule, ChartComponent, DeadlinesComponent
+  imports: [CommonModule, FormsModule, ChartComponent, DeadlinesComponent, TatimiCalculatorComponent,
+    TvshCalculatorComponent,
+    SigurimetCalculatorComponent,
+    TapCalculatorComponent
     // BusinessIncomeTaxComponent,
     // VatComponent,
     // SocialSecurityComponent,
@@ -27,6 +34,7 @@ interface MonthlyData {
 })
 export class AppComponent {
   // title = 'Sistemi i Llogaritjes së Taksave në Shqipëri';
+  activeComponent: string = 'tvsh-calculator';
 
   months: string[] = [
     'Janar', 'Shkurt', 'Mars', 'Prill', 'Maj', 'Qershor',
@@ -52,6 +60,10 @@ export class AppComponent {
 
     this.currentIncome = 0;
     this.currentExpense = 0;
+  }
+
+  setActiveComponent(component: string) {
+    this.activeComponent = component;
   }
 
   scrollToTrackingSection() {
