@@ -1,35 +1,38 @@
+<!-- Background with Overlay -->
+<div class="app-background"></div>
+
+<!-- Calculator Container -->
+<div class="calculator-container">
+  <h1>{{ title }}</h1>
 <!-- app.component.html -->
-<div class="container mt-4 mb-4">
-    <div class="row mb-4">
-      <div class="col-12 text-center">
-        <h1>{{ title }}</h1>
-        <p class="lead">Llogaritni taksat, TVSH dhe sigurimet shoqërore bazuar në rregullat aktuale në Shqipëri</p>
-      </div>
-    </div>
+<div class="app-background">
   
-    <div class="row mb-4">
-      <div class="col-lg-6 mb-4">
-        <app-business-income-tax></app-business-income-tax>
-      </div>
-      <div class="col-lg-6 mb-4">
-        <app-vat></app-vat>
-      </div>
-    </div>
-  
-    <div class="row mb-4">
-      <div class="col-lg-6 mb-4">
-        <app-social-security></app-social-security>
-      </div>
-      <div class="col-lg-6 mb-4">
-        <app-income-tax></app-income-tax>
-      </div>
-    </div>
-  
-    <div class="row">
-      <div class="col-12 text-center">
-        <footer class="text-muted">
-          <p>© 2025 - Sistemi i Llogaritjes së Taksave në Shqipëri</p>
-        </footer>
-      </div>
-    </div>
+</div>
+  <!-- Navigation Tabs -->
+  <div class="nav-tabs">
+    <button [class.active]="activeComponent === 'tatimi-calculator'" 
+            (click)="setActiveComponent('tatimi-calculator')">
+      Tatimi i Biznesit
+    </button>
+    <button [class.active]="activeComponent === 'tvsh-calculator'" 
+            (click)="setActiveComponent('tvsh-calculator')">
+      TVSH
+    </button>
+    <button [class.active]="activeComponent === 'sigurimet-calculator'" 
+            (click)="setActiveComponent('sigurimet-calculator')">
+      Sigurime
+    </button>
+    <button [class.active]="activeComponent === 'tap-calculator'" 
+            (click)="setActiveComponent('tap-calculator')">
+      Tatimi mbi Pagat (TAP)
+    </button>
   </div>
+
+  <!-- Dynamic Component Container -->
+  <div class="component-container">
+    <app-tatimi-calculator *ngIf="activeComponent === 'tatimi-calculator'"></app-tatimi-calculator>
+    <app-tvsh-calculator *ngIf="activeComponent === 'tvsh-calculator'"></app-tvsh-calculator>
+    <app-sigurimet-calculator *ngIf="activeComponent === 'sigurimet-calculator'"></app-sigurimet-calculator>
+    <app-tap-calculator *ngIf="activeComponent === 'tap-calculator'"></app-tap-calculator>
+  </div>
+</div>

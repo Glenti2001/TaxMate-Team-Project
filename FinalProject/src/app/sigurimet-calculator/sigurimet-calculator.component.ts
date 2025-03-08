@@ -1,79 +1,63 @@
-// social-security.component.ts
 import { Component } from '@angular/core';
-import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-
-interface Employee {
-  name: string;
-  salary: number;
-  employeeSocialSecurity: number;
-  employeeHealthInsurance: number;
-  employerSocialSecurity: number;
-  employerHealthInsurance: number;
-  totalEmployeeContribution: number;
-  totalEmployerContribution: number;
-}
+import { FormsModule } from '@angular/forms';
 
 @Component({
-  selector: 'app-social-security',
-  standalone: true,
-  imports: [FormsModule, CommonModule],
+  selector: 'app-sigurimet-calculator',
+  standalone: true, // Mark as standalone
+  imports: [CommonModule, FormsModule], // Import required modules
   templateUrl: './sigurimet-calculator.component.html',
   styleUrls: ['./sigurimet-calculator.component.scss']
 })
-export class SocialSecurityComponent {
-  employees: Employee[] = [{ 
-    name: '', 
-    salary: 0, 
-    employeeSocialSecurity: 0, 
-    employeeHealthInsurance: 0, 
-    employerSocialSecurity: 0,
-    employerHealthInsurance: 0,
-    totalEmployeeContribution: 0,
-    totalEmployerContribution: 0
-  }];
-
-  totalEmployerContribution: number = 0;
-  totalEmployeeContribution: number = 0;
-
-  addEmployee() {
-    this.employees.push({ 
-      name: '', 
-      salary: 0, 
-      employeeSocialSecurity: 0, 
-      employeeHealthInsurance: 0, 
-      employerSocialSecurity: 0,
-      employerHealthInsurance: 0,
-      totalEmployeeContribution: 0,
-      totalEmployerContribution: 0
-    });
-  }
-
-  removeEmployee(index: number) {
-    if (this.employees.length > 1) {
-      this.employees.splice(index, 1);
-      this.calculateTotals();
+export class SigurimetCalculatorComponent {
+  grossSalary = 0;
+  numberOfEmployees = 1;
+  
+  // Constants for rates
+  employeeContributionSocial = 9.5; // 9.5% Sigurimet Shoqërore për punonjës
+  employeeContributionHealth = 1.7; // 1.7% Sigurimet Shëndetësore për punonjës
+  employerContributionSocial = 15.0; // 15% Sigurimet Shoqërore për punëdhënës
+  employerContributionHealth = 1.7; // 1.7% Sigurimet Shëndetësore për punëdhënës
+  
+  // Results
+  totalEmployeeContribution = 0;
+  totalEmployerContribution = 0;
+  totalContribution = 0;
+  netSalary = 0;
+  
+  constructor() { }
+  
+  calculateContributions() {
+    // Employee contributions
+    const employeeSocialAmount = (this.grossSalary * this.employeeContributionSocial) / 100;
+    const employeeHealthAmount = (this.grossSalary * this.employeeContributionHealth) / 100;
+    this.totalEmployeeContribution = employeeSocialAmount + employeeHealthAmount;
+    
+    // Employer contributions
+    const employerSocialAmount = (this.grossSalary * this.employerContributionSocial) / 100;
+    const employerHealthAmount = (this.grossSalary * this.employerContributionHealth) / 100;
+    this.totalEmployerContribution = employerSocialAmount + employerHealthAmount;
+    
+    // Total contributions
+    this.totalContribution = this.totalEmployeeContribution + this.totalEmployerContribution;
+    
+    // Net salary (before income tax)
+    this.netSalary = this.grossSalary - this.totalEmployeeContribution;
+    
+    // Multiply by number of employees
+    if (this.numberOfEmployees > 1) {
+      this.totalEmployeeContribution *= this.numberOfEmployees;
+      this.totalEmployerContribution *= this.numberOfEmployees;
+      this.totalContribution *= this.numberOfEmployees;
     }
   }
-
-  calculateContributions(index: number) {
-    const employee = this.employees[index];
-    
-    // Employee contributions (9.5% social security + 1.7% health insurance)
-    employee.employeeSocialSecurity = employee.salary * 0.095;
-    employee.employeeHealthInsurance = employee.salary * 0.017;
-    employee.totalEmployeeContribution = employee.employeeSocialSecurity + employee.employeeHealthInsurance;
-    
-    // Employer contributions (15% social security + 1.7% health insurance)
-    employee.employerSocialSecurity = employee.salary * 0.15;
-    employee.employerHealthInsurance = employee.salary * 0.017;
-    employee.totalEmployerContribution = employee.employerSocialSecurity + employee.employerHealthInsurance;
-    
-    this.calculateTotals();
-  }
-
-  calculateTotals() {
-    this.totalEmployeeContribution = this.employees.reduce((sum, emp) => sum + emp.totalEmployeeContribution, 0);
-    this.totalEmployerContribution = this.employees.reduce((sum, emp) => sum + emp.totalEmployerContribution, 0);
+  
+  resetForm() {
+    this.grossSalary = 0;
+    this.numberOfEmployees = 1;
+    this.totalEmployeeContribution = 0;
+    this.totalEmployerContribution = 0;
+    this.totalContribution = 0;
+    this.netSalary = 0;
   }
 }

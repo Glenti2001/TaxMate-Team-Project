@@ -1,30 +1,45 @@
-<!-- vat.component.html -->
-<div class="card">
-    <div class="card-header bg-success text-white">
-      <h4>TVSH (Taksa mbi Vlerën e Shtuar)</h4>
-    </div>
-    <div class="card-body">
-      <div class="form-group mb-3">
-        <label for="vatType">Lloji i TVSH-së:</label>
-        <select id="vatType" class="form-control" [(ngModel)]="vatType">
-          <option value="standard">TVSH normale (20%)</option>
-          <option value="agriculture">TVSH në bujqësi (6%)</option>
-        </select>
-      </div>
-  
-      <div class="form-group mb-3">
-        <label for="amount">Vlera pa TVSH (në lekë):</label>
-        <input type="number" id="amount" class="form-control" [(ngModel)]="amount">
-      </div>
-  
-      <button class="btn btn-success" (click)="calculateVAT()">Llogarit</button>
-  
-      <div class="results mt-3" *ngIf="vatAmount !== 0">
-        <div class="alert alert-info">
-          <strong>Vlera pa TVSH:</strong> {{amount | number:'1.2-2'}} lekë<br>
-          <strong>TVSH ({{vatRate}}%):</strong> {{vatAmount | number:'1.2-2'}} lekë<br>
-          <strong>Vlera me TVSH:</strong> {{totalAmount | number:'1.2-2'}} lekë
-        </div>
-      </div>
-    </div>
+<!-- tvsh-calculator.component.html -->
+<h2>Llogaritësi i TVSH</h2>
+
+<div class="calculator-form">
+  <div class="form-group">
+    <label for="tvshType">Lloji i TVSH</label>
+    <select id="tvshType" [(ngModel)]="selectedTvshType" (change)="calculateTvsh()">
+      <option *ngFor="let type of tvshTypes" [ngValue]="type">{{ type.name }}</option>
+    </select>
   </div>
+
+  <div class="form-group">
+    <label for="baseAmount">Vlera pa TVSH (LEK)</label>
+    <input type="number" id="baseAmount" [(ngModel)]="baseAmount" (input)="calculateTvsh()">
+  </div>
+
+  <div class="button-group">
+    <button class="calculate-btn" (click)="calculateTvsh()">Llogarit</button>
+    <button class="reset-btn" (click)="resetForm()">Rivendos</button>
+  </div>
+</div>
+
+<div class="results-container">
+  <h3>Rezultati i Llogaritjes së TVSH</h3>
+  
+  <div class="result-item">
+    <span class="result-label">Vlera pa TVSH:</span>
+    <span class="result-value">{{ baseAmount | number:'1.2-2' }} LEK</span>
+  </div>
+  
+  <div class="result-item">
+    <span class="result-label">Përqindja e TVSH:</span>
+    <span class="result-value">{{ tvshPercentage }}%</span>
+  </div>
+  
+  <div class="result-item">
+    <span class="result-label">Vlera e TVSH:</span>
+    <span class="result-value">{{ tvshAmount | number:'1.2-2' }} LEK</span>
+  </div>
+  
+  <div class="result-item total">
+    <span class="result-label">Vlera Totale me TVSH:</span>
+    <span class="result-value">{{ totalAmount | number:'1.2-2' }} LEK</span>
+  </div>
+</div>

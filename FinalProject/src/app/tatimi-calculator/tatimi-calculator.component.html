@@ -1,38 +1,62 @@
-<!-- business-income-tax.component.html -->
-<div class="card">
-    <div class="card-header bg-primary text-white">
-      <h4>Tatimi mbi të ardhurat e biznesit</h4>
-    </div>
-    <div class="card-body">
-      <div class="form-group mb-3">
-        <label for="businessType">Lloji i biznesit:</label>
-        <select id="businessType" class="form-control" [(ngModel)]="businessType">
-          <option value="small">Biznes i vogël</option>
-          <option value="large">Biznes i madh</option>
-        </select>
-      </div>
-  
-      <div *ngIf="businessType === 'small'" class="form-group mb-3">
-        <label for="revenue">Xhiro vjetore (në lekë):</label>
-        <input type="number" id="revenue" class="form-control" [(ngModel)]="revenue">
-        <small class="form-text text-muted">
-          0% për xhiro deri në 8 milionë lekë, 5% për xhiro 8-14 milionë lekë
-        </small>
-      </div>
-  
-      <div *ngIf="businessType === 'large'" class="form-group mb-3">
-        <label for="profit">Fitimi vjetor (në lekë):</label>
-        <input type="number" id="profit" class="form-control" [(ngModel)]="profit">
-        <small class="form-text text-muted">15% mbi fitimin</small>
-      </div>
-  
-      <button class="btn btn-primary" (click)="calculateTax()">Llogarit</button>
-  
-      <div class="results mt-3" *ngIf="tax !== undefined">
-        <div class="alert alert-info">
-          <strong>Norma e tatimit:</strong> {{taxRate}}%<br>
-          <strong>Tatimi për të paguar:</strong> {{tax | number:'1.2-2'}} lekë
-        </div>
-      </div>
+<!-- tatimi-calculator.component.html -->
+<h2>Llogaritësi i Tatimit mbi të Ardhurat e Biznesit</h2>
+
+<div class="calculator-form">
+  <div class="form-group">
+    <label for="businessType">Lloji i Biznesit</label>
+    <select id="businessType" [(ngModel)]="selectedBusinessType" (change)="calculateTax()">
+      <option *ngFor="let type of businessTypes" [ngValue]="type">{{ type.name }}</option>
+    </select>
+  </div>
+
+  <div class="form-group" *ngIf="selectedBusinessType.id === 'small'">
+    <label for="revenue">Xhiro Vjetore (LEK)</label>
+    <input type="number" id="revenue" [(ngModel)]="revenue" (input)="calculateTax()">
+    <div class="info-text">
+      <p>0% për xhiro deri në 8 milionë lekë</p>
+      <p>5% për xhiro 8-14 milionë lekë</p>
     </div>
   </div>
+
+  <div class="form-group" *ngIf="selectedBusinessType.id === 'large'">
+    <label for="profit">Fitimi Vjetor (LEK)</label>
+    <input type="number" id="profit" [(ngModel)]="profit" (input)="calculateTax()">
+    <div class="info-text">
+      <p>15% mbi fitimin</p>
+    </div>
+  </div>
+
+  <div class="button-group">
+    <button class="calculate-btn" (click)="calculateTax()">Llogarit</button>
+    <button class="reset-btn" (click)="resetForm()">Rivendos</button>
+  </div>
+</div>
+
+<div class="results-container">
+  <h3>Rezultati i Llogaritjes së Tatimit</h3>
+  
+  <div class="result-item">
+    <span class="result-label">Lloji i Biznesit:</span>
+    <span class="result-value">{{ selectedBusinessType.name }}</span>
+  </div>
+  
+  <div class="result-item" *ngIf="selectedBusinessType.id === 'small'">
+    <span class="result-label">Xhiro Vjetore:</span>
+    <span class="result-value">{{ revenue | number:'1.2-2' }} LEK</span>
+  </div>
+  
+  <div class="result-item" *ngIf="selectedBusinessType.id === 'large'">
+    <span class="result-label">Fitimi Vjetor:</span>
+    <span class="result-value">{{ profit | number:'1.2-2' }} LEK</span>
+  </div>
+  
+  <div class="result-item">
+    <span class="result-label">Përqindja e Tatimit:</span>
+    <span class="result-value">{{ taxRate }}%</span>
+  </div>
+  
+  <div class="result-item total">
+    <span class="result-label">Tatimi për t'u Paguar:</span>
+    <span class="result-value">{{ taxAmount | number:'1.2-2' }} LEK</span>
+  </div>
+</div>
