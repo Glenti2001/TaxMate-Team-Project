@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
 @Component({
-  selector: 'app-tvsh-calculator', // ✅ Fixed selector
+  selector: 'app-tvsh-calculator', 
   standalone: true,
   imports: [CommonModule, FormsModule],
   templateUrl: './tvsh-calculator.component.html',

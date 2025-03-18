@@ -1,17 +1,22 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { DeadlinesComponent } from './deadline.component';
-describe('DeadlinesComponent', () => {
-  let component: DeadlinesComponent;
-  let fixture: ComponentFixture<DeadlinesComponent>;
+
+import { CalculatorComponent } from './calculator.component';
+
+describe('CalculatorComponent', () => {
+  let component: CalculatorComponent;
+  let fixture: ComponentFixture<CalculatorComponent>;
+
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [DeadlinesComponent]
+      imports: [CalculatorComponent]
     })
     .compileComponents();
-    fixture = TestBed.createComponent(DeadlinesComponent);
+
+    fixture = TestBed.createComponent(CalculatorComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
+
   it('should create', () => {
     expect(component).toBeTruthy();
   });

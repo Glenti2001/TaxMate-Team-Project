@@ -1,70 +1,110 @@
-<!-- sigurimet-calculator.component.html -->
 <h2>Llogaritësi i Sigurimeve Shoqërore dhe Shëndetësore</h2>
 
 <div class="calculator-form">
   <div class="form-group">
     <label for="grossSalary">Paga Bruto (LEK)</label>
-    <input type="number" id="grossSalary" [(ngModel)]="grossSalary" (input)="calculateContributions()">
+    <input
+      type="number"
+      id="grossSalary"
+      [(ngModel)]="grossSalary"
+      (input)="calculateContributions()"
+    />
   </div>
 
   <div class="form-group">
     <label for="numberOfEmployees">Numri i Punonjësve</label>
-    <input type="number" id="numberOfEmployees" [(ngModel)]="numberOfEmployees" min="1" (input)="calculateContributions()">
+    <input
+      type="number"
+      id="numberOfEmployees"
+      [(ngModel)]="numberOfEmployees"
+      min="1"
+      (input)="calculateContributions()"
+    />
   </div>
 
   <div class="info-box">
     <p><strong>Normat e kontributeve:</strong></p>
     <p>Sigurimet Shoqërore për punonjës: {{ employeeContributionSocial }}%</p>
-    <p>Sigurimet Shëndetësore për punonjës: {{ employeeContributionHealth }}%</p>
+    <p>
+      Sigurimet Shëndetësore për punonjës: {{ employeeContributionHealth }}%
+    </p>
     <p>Sigurimet Shoqërore për punëdhënës: {{ employerContributionSocial }}%</p>
-    <p>Sigurimet Shëndetësore për punëdhënës: {{ employerContributionHealth }}%</p>
+    <p>
+      Sigurimet Shëndetësore për punëdhënës: {{ employerContributionHealth }}%
+    </p>
   </div>
 
   <div class="button-group">
-    <button class="calculate-btn" (click)="calculateContributions()">Llogarit</button>
+    <button class="calculate-btn" (click)="calculateContributions()">
+      Llogarit
+    </button>
     <button class="reset-btn" (click)="resetForm()">Rivendos</button>
   </div>
 </div>
 
 <div class="results-container">
   <h3>Rezultati i Llogaritjes së Sigurimeve</h3>
-  
+
   <div class="result-item">
     <span class="result-label">Paga Bruto:</span>
-    <span class="result-value">{{ grossSalary | number:'1.2-2' }} LEK</span>
+    <span class="result-value">{{ grossSalary | number : "1.2-2" }} LEK</span>
   </div>
-  
+
   <div class="result-item">
-    <span class="result-label">Kontributi i Punonjësit ({{ employeeContributionSocial + employeeContributionHealth }}%):</span>
-    <span class="result-value">{{ (totalEmployeeContribution / numberOfEmployees) | number:'1.2-2' }} LEK</span>
+    <span class="result-label"
+      >Kontributi i Punonjësit ({{
+        employeeContributionSocial + employeeContributionHealth
+      }}%):</span
+    >
+    <span class="result-value"
+      >{{
+        totalEmployeeContribution / numberOfEmployees | number : "1.2-2"
+      }}
+      LEK</span
+    >
   </div>
-  
+
   <div class="result-item">
-    <span class="result-label">Kontributi i Punëdhënësit ({{ employerContributionSocial + employerContributionHealth }}%):</span>
-    <span class="result-value">{{ (totalEmployerContribution / numberOfEmployees) | number:'1.2-2' }} LEK</span>
+    <span class="result-label"
+      >Kontributi i Punëdhënësit ({{
+        employerContributionSocial + employerContributionHealth
+      }}%):</span
+    >
+    <span class="result-value"
+      >{{
+        totalEmployerContribution / numberOfEmployees | number : "1.2-2"
+      }}
+      LEK</span
+    >
   </div>
-  
+
   <div class="result-item">
     <span class="result-label">Paga Neto (para tatimit):</span>
-    <span class="result-value">{{ netSalary | number:'1.2-2' }} LEK</span>
+    <span class="result-value">{{ netSalary | number : "1.2-2" }} LEK</span>
   </div>
-  
+
   <div *ngIf="numberOfEmployees > 1" class="totals-section">
     <h4>Totali për {{ numberOfEmployees }} punonjës</h4>
-    
+
     <div class="result-item">
       <span class="result-label">Kontribute Totale të Punonjësve:</span>
-      <span class="result-value">{{ totalEmployeeContribution | number:'1.2-2' }} LEK</span>
+      <span class="result-value"
+        >{{ totalEmployeeContribution | number : "1.2-2" }} LEK</span
+      >
     </div>
-    
+
     <div class="result-item">
       <span class="result-label">Kontribute Totale të Punëdhënësit:</span>
-      <span class="result-value">{{ totalEmployerContribution | number:'1.2-2' }} LEK</span>
+      <span class="result-value"
+        >{{ totalEmployerContribution | number : "1.2-2" }} LEK</span
+      >
     </div>
   </div>
-  
+
   <div class="result-item total">
     <span class="result-label">Kontribute Totale:</span>
-    <span class="result-value">{{ totalContribution | number:'1.2-2' }} LEK</span>
+    <span class="result-value"
+      >{{ totalContribution | number : "1.2-2" }} LEK</span
+    >
   </div>
 </div>

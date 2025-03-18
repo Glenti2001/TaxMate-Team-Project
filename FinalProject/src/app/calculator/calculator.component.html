@@ -1,0 +1,45 @@
+<div class="app-background"></div>
+
+<div class="calculator-container">
+  <div class="container mt-4 mb-4">
+    <div class="col-12 text-center">
+      <h1>{{ title }}</h1>
+      <p class="lead">Llogaritni taksat, TVSH dhe sigurimet shoqërore bazuar në rregullat aktuale në Shqipëri</p>
+    </div>
+  </div>
+
+  
+  <div class="nav-tabs">
+    <button [class.active]="activeComponent === 'tatimi-calculator'"
+            (click)="setActiveComponent('tatimi-calculator')">
+      Tatimi i Biznesit
+    </button>
+    <button [class.active]="activeComponent === 'tvsh-calculator'"
+            (click)="setActiveComponent('tvsh-calculator')">
+      TVSH
+    </button>
+    <button [class.active]="activeComponent === 'sigurimet-calculator'"
+            (click)="setActiveComponent('sigurimet-calculator')">
+      Sigurime
+    </button>
+    <button [class.active]="activeComponent === 'tap-calculator'"
+            (click)="setActiveComponent('tap-calculator')">
+      Tatimi mbi Pagat (TAP)
+    </button>
+  </div>
+
+  <div class="component-container">
+    <app-tatimi-calculator *ngIf="activeComponent === 'tatimi-calculator'"></app-tatimi-calculator>
+    <app-tvsh-calculator *ngIf="activeComponent === 'tvsh-calculator'"></app-tvsh-calculator>
+    <app-sigurimet-calculator *ngIf="activeComponent === 'sigurimet-calculator'"></app-sigurimet-calculator>
+    <app-tap-calculator *ngIf="activeComponent === 'tap-calculator'"></app-tap-calculator>
+  </div>
+
+  <div class="row">
+    <div class="col-12 text-center">
+      <footer class="text-muted">
+        <p>© 2025 - Sistemi i Llogaritjes së Taksave në Shqipëri</p>
+      </footer>
+    </div>
+  </div>
+</div>

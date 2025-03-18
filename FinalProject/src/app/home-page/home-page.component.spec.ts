@@ -1,17 +1,22 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { DeadlinesComponent } from './deadline.component';
-describe('DeadlinesComponent', () => {
-  let component: DeadlinesComponent;
-  let fixture: ComponentFixture<DeadlinesComponent>;
+
+import { HomePageComponent } from './home-page.component';
+
+describe('HomePageComponent', () => {
+  let component: HomePageComponent;
+  let fixture: ComponentFixture<HomePageComponent>;
+
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [DeadlinesComponent]
+      imports: [HomePageComponent]
     })
     .compileComponents();
-    fixture = TestBed.createComponent(DeadlinesComponent);
+
+    fixture = TestBed.createComponent(HomePageComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
+
   it('should create', () => {
     expect(component).toBeTruthy();
   });

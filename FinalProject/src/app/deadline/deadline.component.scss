@@ -1,67 +1,59 @@
-.deadlines-container {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-    font-family: Arial, sans-serif;
-  }
-  .deadlines-title {
-    text-align: center;
-    margin-bottom: 20px;
+.payment-deadlines-container {
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  font-family: 'Roboto', sans-serif;
+  max-width: 800px;
+  margin: auto;
+  margin-top: 175px;
+  margin-bottom: 250px;
+
+  .title {
     font-size: 24px;
-    font-weight: 500;
+    font-weight: bold;
+    color: #2C3E50;
+    text-align: center;
+    margin-bottom: 15px;
   }
-  .deadlines-table {
-    border: 1px solid #E0E0E0;
-    border-radius: 4px;
+  .payment-table {
+    width: 100%;
+    border-collapse: collapse;
+    border-radius: 10px;
     overflow: hidden;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
-  .deadlines-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px 20px;
-    border-bottom: 1px solid #E0E0E0;
-    &:last-child {
-      border-bottom: none;
+    thead {
+      background-color: #5380e1da;
+      color: #e9dcdc;
+      text-transform: uppercase;
     }
-    &:nth-child(odd) {
-      background-color: #F9F9F9;
+    th, td {
+      padding: 12px 15px;
+      text-align: left;
+      border-bottom: 1px solid #1d1c1c;
     }
-  }
-  .deadline-details {
-    display: flex;
-    flex-direction: column;
-  }
-  .deadline-name {
-    font-weight: 500;
-    margin-bottom: 5px;
-  }
-  .deadline-condition {
-    font-size: 14px;
-    color: #666;
-  }
-  .countdown-button {
-    background-color: #F44336;
-    color: white;
-    padding: 8px 16px;
-    border-radius: 20px;
-    font-size: 14px;
-    font-weight: 500;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-    &.urgent {
-      background-color: #D32F2F;
-      animation: pulse 1.5s infinite;
+    th {
+      font-weight: bold;
+    }
+    tbody tr:nth-child(even) {
+      background-color: #F5F5F5;
+    }
+    tbody tr:hover {
+      background-color: #d0ecf7;
+    }
+    .description-col {
+      width: 60%;
+    }
+    .condition-col {
+      width: 40%;
+      color: #ffffff;
+      font-weight: bold;
+      text-align: right;
     }
   }
-  @keyframes pulse {
-    0% {
-      box-shadow: 0 0 0 0 rgba(211, 47, 47, 0.7);
-    }
-    70% {
-      box-shadow: 0 0 0 10px rgba(211, 47, 47, 0);
-    }
-    100% {
-      box-shadow: 0 0 0 0 rgba(211, 47, 47, 0);
-    }
-  } 
+}
+
+
+
+
+
+

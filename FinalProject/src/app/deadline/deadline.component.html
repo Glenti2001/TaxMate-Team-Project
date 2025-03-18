@@ -1,14 +1,34 @@
-<div class="deadlines-container">
-  <h2 class="deadlines-title">Payment Deadlines</h2>
-  <div class="deadlines-table">
-    <div class="deadlines-row" *ngFor="let deadline of deadlines">
-      <div class="deadline-details">
-        <div class="deadline-name">{{ deadline.name }}</div>
-        <div class="deadline-condition">{{ deadline.condition }}</div>
-      </div>
-      <div class="countdown-button" [ngClass]="{'urgent': deadline.daysRemaining < 7}">
-        <span>{{ deadline.daysRemaining }} days</span>
-      </div>
-    </div>
-  </div>
+<div class="payment-deadlines-container">
+  
+  <h2 class="title">Afatet e Pagesave</h2>
+  <table class="payment-table">
+    <thead>
+      <tr>
+        <th class="description-col">Përshkrimi</th>
+        <th class="condition-col">Kushti</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Tatimi mbi Fitimin</td>
+        <td>Kushti: 31 mars</td>
+      </tr>
+      <tr>
+        <td>TVSH</td>
+        <td>Kushti: Cdo 3 muaj</td>
+      </tr>
+      <tr>
+        <td>Kontributet Sociale</td>
+        <td>Kushti: Cdo muaj pas ditës së 20-të të muajit të ardhshëm</td>
+      </tr>
+      <tr>
+        <td>Taksat lokale</td>
+        <td>Kushti: Cdo vit deri më 31 mars</td>
+      </tr>
+      <tr>
+        <td>Tatimi mbi pagat</td>
+        <td>Kushti: Cdo muaj pas ditës së 20-të të muajit të ardhshëm</td>
+      </tr>
+    </tbody>
+  </table>
 </div>

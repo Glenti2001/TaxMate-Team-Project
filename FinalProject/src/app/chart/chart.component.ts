@@ -2,6 +2,7 @@ import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NgChartsModule } from 'ng2-charts';
 import { Chart, ChartConfiguration, ChartOptions, registerables } from 'chart.js';
+
 Chart.register(...registerables);
 
 interface MonthlyData {
@@ -25,7 +26,7 @@ export class ChartComponent implements OnChanges {
     datasets: [
       {
         data: [],
-        label: 'Income',
+        label: 'Te Ardhura',
         backgroundColor: 'rgba(75, 192, 192, 0.2)',
         borderColor: 'rgba(75, 192, 192, 1)',
         pointBackgroundColor: 'rgba(75, 192, 192, 1)',
@@ -40,7 +41,7 @@ export class ChartComponent implements OnChanges {
     datasets: [
       {
         data: [],
-        label: 'Expenses',
+        label: 'Shpenzime',
         backgroundColor: 'rgba(255, 99, 132, 0.2)',
         borderColor: 'rgba(255, 99, 132, 1)',
         pointBackgroundColor: 'rgba(255, 99, 132, 1)',
