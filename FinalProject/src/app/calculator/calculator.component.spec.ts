@@ -1,5 +1,4 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { CalculatorComponent } from './calculator.component';
 
 describe('CalculatorComponent', () => {
@@ -10,7 +9,7 @@ describe('CalculatorComponent', () => {
     await TestBed.configureTestingModule({
       imports: [CalculatorComponent]
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(CalculatorComponent);
     component = fixture.componentInstance;

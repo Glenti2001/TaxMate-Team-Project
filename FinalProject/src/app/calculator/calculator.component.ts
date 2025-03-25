@@ -7,9 +7,9 @@ import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-calculator',
-  imports: [TapCalculatorComponent, SigurimetCalculatorComponent, 
+  imports: [TapCalculatorComponent, SigurimetCalculatorComponent,
     TvshCalculatorComponent, TatimiCalculatorComponent, CommonModule],
-    standalone: true,
+  standalone: true,
   templateUrl: './calculator.component.html',
   styleUrl: './calculator.component.scss'
 })

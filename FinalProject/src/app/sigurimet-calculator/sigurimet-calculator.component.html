@@ -3,23 +3,13 @@
 <div class="calculator-form">
   <div class="form-group">
     <label for="grossSalary">Paga Bruto (LEK)</label>
-    <input
-      type="number"
-      id="grossSalary"
-      [(ngModel)]="grossSalary"
-      (input)="calculateContributions()"
-    />
+    <input type="number" id="grossSalary" [(ngModel)]="grossSalary" (input)="calculateContributions()" />
   </div>
 
   <div class="form-group">
     <label for="numberOfEmployees">Numri i Punonjësve</label>
-    <input
-      type="number"
-      id="numberOfEmployees"
-      [(ngModel)]="numberOfEmployees"
-      min="1"
-      (input)="calculateContributions()"
-    />
+    <input type="number" id="numberOfEmployees" [(ngModel)]="numberOfEmployees" min="1"
+      (input)="calculateContributions()" />
   </div>
 
   <div class="info-box">
@@ -51,31 +41,23 @@
   </div>
 
   <div class="result-item">
-    <span class="result-label"
-      >Kontributi i Punonjësit ({{
-        employeeContributionSocial + employeeContributionHealth
-      }}%):</span
-    >
-    <span class="result-value"
-      >{{
-        totalEmployeeContribution / numberOfEmployees | number : "1.2-2"
+    <span class="result-label">Kontributi i Punonjësit ({{
+      employeeContributionSocial + employeeContributionHealth
+      }}%):</span>
+    <span class="result-value">{{
+      totalEmployeeContribution / numberOfEmployees | number : "1.2-2"
       }}
-      LEK</span
-    >
+      LEK</span>
   </div>
 
   <div class="result-item">
-    <span class="result-label"
-      >Kontributi i Punëdhënësit ({{
-        employerContributionSocial + employerContributionHealth
-      }}%):</span
-    >
-    <span class="result-value"
-      >{{
-        totalEmployerContribution / numberOfEmployees | number : "1.2-2"
+    <span class="result-label">Kontributi i Punëdhënësit ({{
+      employerContributionSocial + employerContributionHealth
+      }}%):</span>
+    <span class="result-value">{{
+      totalEmployerContribution / numberOfEmployees | number : "1.2-2"
       }}
-      LEK</span
-    >
+      LEK</span>
   </div>
 
   <div class="result-item">
@@ -88,23 +70,17 @@
 
     <div class="result-item">
       <span class="result-label">Kontribute Totale të Punonjësve:</span>
-      <span class="result-value"
-        >{{ totalEmployeeContribution | number : "1.2-2" }} LEK</span
-      >
+      <span class="result-value">{{ totalEmployeeContribution | number : "1.2-2" }} LEK</span>
     </div>
 
     <div class="result-item">
       <span class="result-label">Kontribute Totale të Punëdhënësit:</span>
-      <span class="result-value"
-        >{{ totalEmployerContribution | number : "1.2-2" }} LEK</span
-      >
+      <span class="result-value">{{ totalEmployerContribution | number : "1.2-2" }} LEK</span>
     </div>
   </div>
 
   <div class="result-item total">
     <span class="result-label">Kontribute Totale:</span>
-    <span class="result-value"
-      >{{ totalContribution | number : "1.2-2" }} LEK</span
-    >
+    <span class="result-value">{{ totalContribution | number : "1.2-2" }} LEK</span>
   </div>
 </div>

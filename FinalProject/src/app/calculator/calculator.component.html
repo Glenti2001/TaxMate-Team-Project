@@ -8,22 +8,19 @@
     </div>
   </div>
 
-  
+
   <div class="nav-tabs">
-    <button [class.active]="activeComponent === 'tatimi-calculator'"
-            (click)="setActiveComponent('tatimi-calculator')">
+    <button [class.active]="activeComponent === 'tatimi-calculator'" (click)="setActiveComponent('tatimi-calculator')">
       Tatimi i Biznesit
     </button>
-    <button [class.active]="activeComponent === 'tvsh-calculator'"
-            (click)="setActiveComponent('tvsh-calculator')">
+    <button [class.active]="activeComponent === 'tvsh-calculator'" (click)="setActiveComponent('tvsh-calculator')">
       TVSH
     </button>
     <button [class.active]="activeComponent === 'sigurimet-calculator'"
-            (click)="setActiveComponent('sigurimet-calculator')">
+      (click)="setActiveComponent('sigurimet-calculator')">
       Sigurime
     </button>
-    <button [class.active]="activeComponent === 'tap-calculator'"
-            (click)="setActiveComponent('tap-calculator')">
+    <button [class.active]="activeComponent === 'tap-calculator'" (click)="setActiveComponent('tap-calculator')">
       Tatimi mbi Pagat (TAP)
     </button>
   </div>

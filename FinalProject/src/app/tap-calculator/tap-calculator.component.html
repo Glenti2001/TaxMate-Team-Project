@@ -27,51 +27,52 @@
 
 <div class="results-container">
   <h3>Rezultati i Llogaritjes së TAP</h3>
-  
+
   <div class="result-item">
     <span class="result-label">Paga Bruto:</span>
     <span class="result-value">{{ grossSalary | number:'1.2-2' }} LEK</span>
   </div>
-  
+
   <div class="result-item">
     <span class="result-label">Kontributet e Sigurimeve:</span>
     <span class="result-value">{{ socialSecurityContribution | number:'1.2-2' }} LEK</span>
   </div>
-  
+
   <div class="result-item">
     <span class="result-label">Paga e Tatueshme:</span>
     <span class="result-value">{{ taxableIncome | number:'1.2-2' }} LEK</span>
   </div>
-  
+
   <div class="tax-breakdown">
     <h4>Detaje të Tatimit</h4>
-    
+
     <div class="breakdown-item">
       <span>Tatimi për 0-{{ taxBracket1 | number:'1.0-0' }} LEK ({{ taxRate1 }}%):</span>
       <span>{{ bracket1Tax | number:'1.2-2' }} LEK</span>
     </div>
-    
+
     <div class="breakdown-item" *ngIf="bracket2Amount > 0">
-      <span>Tatimi për {{ taxBracket1 | number:'1.0-0' }}-{{ taxBracket2 | number:'1.0-0' }} LEK ({{ taxRate2 }}%):</span>
+      <span>Tatimi për {{ taxBracket1 | number:'1.0-0' }}-{{ taxBracket2 | number:'1.0-0' }} LEK ({{ taxRate2
+        }}%):</span>
       <span>{{ bracket2Tax | number:'1.2-2' }} LEK</span>
     </div>
-    
+
     <div class="breakdown-item" *ngIf="bracket3Amount > 0">
       <span>Tatimi për shumën mbi {{ taxBracket2 | number:'1.0-0' }} LEK ({{ taxRate3 }}%):</span>
       <span>{{ bracket3Tax | number:'1.2-2' }} LEK</span>
     </div>
   </div>
-  
+
   <div class="result-item">
     <span class="result-label">Tatimi Total:</span>
     <span class="result-value">{{ incomeTax | number:'1.2-2' }} LEK</span>
   </div>
-  
+
   <div class="result-item">
     <span class="result-label">Norma Efektive e Tatimit:</span>
     <span class="result-value">{{ effectiveTaxRate | number:'1.2-2' }}%</span>
   </div>
-  
+
   <div class="result-item total">
     <span class="result-label">Paga Neto:</span>
     <span class="result-value">{{ netSalary | number:'1.2-2' }} LEK</span>
